@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+    <head>
+        <title>Iniciar Sesión</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <script src="js/validaciones.js"></script>
+    </head>
+
+    <body>
+
+        <form action="iniciar.jsp" method="post">
+            <h1>Iniciar Sesión</h1>
+          
+            <label for="tipoDocumento">Tipo de Documento </label>
+            <select name="tipoDocumento" id="tipoDocumento">
+                <option value="1">Cédula de ciudadanía</option>
+                <option value="2">Tarjeta de Identidad</option>
+                <option value="3">Tarjeta de Extranjería</option>
+                <option value="4">Cédula de extranjería</option>
+                <option value="5">NIT</option>
+                <option value="6">Pasaporte</option>
+            </select><br>
+            <label for="nDocumento">Número de Documento</label>
+            <input type="text" name="nDocumento" id="nDocumento"><br>
+        
+            <input type="submit" name="button" id="button" value="Enviar">
+        </form>
+    </body>

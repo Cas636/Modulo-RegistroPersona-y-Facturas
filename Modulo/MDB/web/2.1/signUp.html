@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+    <head>
+        <title>Registro</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <script src="js/validaciones.js"></script>
+    </head>
+
+    <body>
+
+        <form id="miFormulario" action="registro.jsp" method="post">
+            <h1>Registro</h1>
+            <label for="tipoPersona">Tipo de Persona </label>
+            <select name="tipoPersona" id="tipoPersona">
+                <option value="1">Vendedor</option>
+                <option value="2">Auxiliar de Compras</option>
+                <option value="3">Director de Compras</option>
+                <option value="4">Representante de Ventas</option>
+            </select><br>          
+            <label for="tipoDocumento">Tipo de Documento </label>
+            <select name="tipoDocumento" id="tipoDocumento">
+                <option value="1">Cédula de ciudadanía</option>
+                <option value="2">Tarjeta de Identidad</option>
+                <option value="3">Tarjeta de Extranjería</option>
+                <option value="4">Cédula de extranjería</option>
+                <option value="5">NIT</option>
+                <option value="6">Pasaporte</option>
+            </select><br>
+            <label for="nDocumento">Número de Documento</label>
+            <input type="text" name="nDocumento" id="nDocumento"><br>
+            <label for="nombre">Nombre </label>
+            <input type="text" name="nombre" id="nombre"><br>
+            <label for="apellido">Apellido </label>
+            <input type="text" name="apellido" id="apellido"><br>
+            <label id="button" onclick="añadirTel()">Añadir Telefono</label>
+            <div id="contTel"></div>
+            <label id="button" onclick="añadirCorreo()">Añadir Correo</label>
+            <div id="contCorr"></div>
+            <label id="button" onclick="mostrarOcultarDiv()">Insertar Dirección</label>
+            <div id="direc">
+            
+            <div id="contDirecc">
+                <h1>Direccion </h1>
+                <div id="cont">
+                    <label for="tipo_via">Tipo de Vía:</label>
+                    <select id="tipo_via" name="tipo_via" onchange="actualizarCampoTexto();
+                                                                    obligatorio(this);" >
+                        <option value="">-</option>
+                        <option value="AU">Autopista</option>
+                        <option value="AV">Avenida</option>
+                        <option value="AC">Avenida Calle</option>
+                        <option value="AK">Avenida Carrera</option>
+                        <option value="BL">Bulevar</option>
+                        <option value="CL">Calle</option>
+                        <option value="KR">Carrera</option>
+                        <option value="CT">Carretera</option>
+                        <option value="CQ">Circular</option>
+                        <option value="CV">Circunvalar</option>
+                        <option value="CC">Cuentas Corridas</option>
+                        <option value="DG">Diagonal</option>
+                        <option value="PJ">Pasaje</option>
+                        <option value="PS">Paseo</option>
+                        <option value="PT">Peatonal</option>
+                        <option value="TV">Transversal</option>
+                        <option value="TC">Troncal</option>
+                        <option value="VT">Variante</option>
+                        <option value="VI">Vía</option>
+                    </select>
+                </div>
+                <div id="cont">
+                    <label for="num_nom_principal">Número o nombre común, vía principal:</label>
+                    <input type="text" id="num_nom_principal" name="num_nom_principal" oninput="validarCaracteresEspeciales(this)" onchange="actualizarCampoTexto()">
+                </div>
+                <div id="cont">
+                    <label for="let_num_principal"> letra-número-letra que acompaña la nomenclatura:</label>
+                    <input type="text" id="let_num_principal" name="let_num_principal" oninput="validarCaracteresEspeciales(this)" onchange="actualizarCampoTexto()" >
+                </div>
+                <div id="cont">
+                    <label for="prefBis">Prefijo BIS </label>
+                    <select name="prefBis" id="prefBis" onchange="actualizarCampoTexto()">
+                        <option value="">-</option>
+                        <option value="BIS">BIS</option>
+                    </select><br>
+                </div>
+                <div id="cont">
+                    <label for="let_num_prebis"> letra-número-letra que acompaña el prefijo (BIS):</label>
+                    <input type="text" id="let_num_prebis" name="let_num_prebis" oninput="validarCaracteresEspeciales(this)" onchange="actualizarCampoTexto()">
+                </div>
+                <div id="cont">
+                    <label for="cuadrante">Cuadrante</label>
+                    <select name="cuadrante" id="cuadrante" onchange="actualizarCampoTexto()">
+                        <option value="">-</option>
+                        <option value="ESTE">Este</option>
+                        <option value="NORTE">Norte</option>
+                        <option value="OESTE">Oeste</option>
+                        <option value="SUR">Sur</option>
+                    </select>
+                </div>
+                <div id="cont">
+                    <label for="num_via_gener"> Número de la vía generadora:</label>
+                    <input type="number" id="num_via_gener" name="num_via_gener" onchange="actualizarCampoTexto();">
+                </div>
+                <div id="cont">
+                    <label for="let_num_via_gener"> letra-número-letra que acompaña la vía generadora:</label>
+                    <input type="text" id="let_num_via_gener" name="let_num_via_gener" oninput="validarCaracteresEspeciales(this)" onchange="actualizarCampoTexto()">
+                </div>
+                <div id="cont">
+                    <label for="sufBis">Sufijo BIS </label>
+                    <select name="sufBis" id="sufBis" onchange="actualizarCampoTexto()">
+                        <option value="">-</option>
+                        <option value="BIS">BIS</option>
+                    </select>
+                </div>
+                <div id="cont">
+                    <label for="let_num_su_bis"> letra-número-letra que acompaña el sufijo (BIS):</label>
+                    <input type="text" id="let_num_su_bis" name="let_num_su_bis" oninput="validarCaracteresEspeciales(this)" onchange="actualizarCampoTexto()">
+                </div>
+                <div id="cont">
+                    <label for="num_placa"> Número de la placa:</label>
+                    <input type="number" id="num_placa" name="num_placa" onchange="actualizarCampoTexto();">
+                </div>
+                <div id="cont">
+                    <label for="cuadrante_via_gener">Cuadrante</label>
+                    <select name="cuadrante_via_gener" id="cuadrante_via_gener" onchange="actualizarCampoTexto()">
+                        <option value="">-</option>
+                        <option value="ESTE">Este</option>
+                        <option value="NORTE">Norte</option>
+                        <option value="OESTE">Oeste</option>
+                        <option value="SUR">Sur</option>
+                    </select>
+                </div>
+                
+                <div id="cont">
+                    <label for="barrio">Conjunto de manzanas:</label>
+                    <select id="barrio" name="barrio" onchange="actualizarCampoTexto()">
+                        <option value="">-</option>
+                        <option value="BR">Barrio</option>
+                        <option value="CD">Ciudadela</option>
+                        <option value="SM">Supermanzana</option>
+                    </select>
+                </div>
+                <div id="cont">
+                    <label for="nom_barrio">Nombre Barrio:</label>
+                    <input type="text" id="nom_barrio" name="nom_barrio" oninput="validarCaracteresEspeciales(this)" onchange="actualizarCampoTexto()" >
+                </div>
+                <div id="cont">
+                    <label for="manzana">Manzana:</label>
+                    <select id="manzana" name="manzana" onchange="actualizarCampoTexto()">
+                        <option value="">-</option>
+                        <option value="MZ">Manzana</option>
+                        <option value="IN">Interior</option>
+                        <option value="SC">Sector</option>
+                        <option value="ET">Etapa</option>
+                        <option value="ED">Edificio</option>
+                        <option value="MD">Módulo</option>
+                        <option value="TO">Torre</option>
+                    </select>
+                </div>
+                <div id="cont">
+                    <label for="nom_manzana">Nombre Manzana:</label>
+                    <input type="text" id="nom_manzana" name="nom_manzana" oninput="validarCaracteresEspeciales(this)" onchange="actualizarCampoTexto()">
+                </div>
+                <div id="cont">
+                    <label for="urbanizacion">Urbanización:</label>
+                    <select id="urbanizacion" name="urbanizacion" onchange="actualizarCampoTexto()">
+                        <option value="">-</option>
+                        <option value="BQ">Bloque</option>
+                        <option value="CU">Célula</option>
+                        <option value="CO">Conjunto Residencial</option>
+                        <option value="ET">Etapa</option>
+                        <option value="UR">Urbanización</option>
+                        <option value="SC">Sector</option>
+                        <option value="TO">Torre</option>
+                        <option value="ZN">Zona</option>
+                    </select>
+                </div>
+                <div id="cont">
+                    <label for="nom_urbanizacion">Nombre Urbanización:</label>
+                    <input type="text" id="nom_urbanizacion" name="nom_urbanizacion" oninput="validarCaracteresEspeciales(this)" onchange="actualizarCampoTexto()">
+                </div>
+                
+                <div id="cont">
+                    <label for="tipo_predio">Tipo de Predio:</label>
+                    <select id="tipo_predio" name="tipo_predio" onchange="actualizarCampoTexto()">
+                        <option value="">-</option>
+                        <option value="AL">Altillo</option>
+                        <option value="AP">Apartamento</option>
+                        <option value="BG">Bodega</option>
+                        <option value="CS">Casa</option>
+                        <option value="CN">Consultorio</option>
+                        <option value="DP">Depósito</option>
+                        <option value="DS">Depósito Sótano</option>
+                        <option value="GA">Garaje</option>
+                        <option value="GS">Garaje Sótano</option>
+                        <option value="LC">Local</option>
+                        <option value="LM">Local Mezzanine</option>
+                        <option value="LT">Lote</option>
+                        <option value="MN">Mezzanine</option>
+                        <option value="OF">Oficina</option>
+                        <option value="PA">Parqueadero</option>
+                        <option value="PN">Pent-House</option>
+                        <option value="PL">Planta</option>
+                        <option value="PD">Predio</option>
+                        <option value="SS">Semisótano</option>
+                        <option value="SO">Sótano</option>
+                        <option value="ST">Suite</option>
+                        <option value="TZ">Terraza</option>
+                        <option value="UN">Unidad</option>
+                        <option value="UL">Unidad Residencial</option>
+                    </select>
+                </div>
+                <div id="cont">
+                    <label for="nom_predio">Nombre Predio:</label>
+                    <input type="text" id="nom_predio" name="nom_predio" oninput="validarCaracteresEspeciales(this)" onchange="actualizarCampoTexto()">
+                </div>
+                <div id="cont">
+                    <label for="complemento2">Complemento:</label>
+                    <select id="complemento2" name="complemento2" onchange="actualizarCampoTexto()">
+                        <option value="">-</option>
+                        <option value="AD">Administración</option>
+                        <option value="AG">Agrupación</option>
+                        <option value="AL">Altillo</option>
+                        <option value="AP">Apartamento</option>
+                        <option value="BR">Barrio</option>
+                        <option value="BQ">Bloque</option>
+                        <option value="BG">Bodega</option>
+                        <option value="CS">Casa</option>
+                        <option value="CU">Célula</option>
+                        <option value="CE">Centro Comercial</option>
+                        <option value="CD">Ciudadela</option>
+                        <option value="CO">Conjunto Residencial</option>
+                        <option value="CN">Consultorio</option>
+                        <option value="DP">Depósito</option>
+                        <option value="DS">Depósito Sótano</option>
+                        <option value="ED">Edificio</option>
+                        <option value="EN">Entrada</option>
+                        <option value="EQ">Esquina</option>
+                        <option value="ES">Estación</option>
+                        <option value="ET">Etapa</option>
+                        <option value="EX">Exterior</option>
+                        <option value="FI">Finca</option>
+                        <option value="GA">Garaje</option>
+                        <option value="GS">Garaje Sótano</option>
+                        <option value="IN">Interior</option>
+                        <option value="KM">Kilómetro</option>
+                        <option value="LC">Local</option>
+                        <option value="LM">Local Mezzanine</option>
+                        <option value="LT">Lote</option>
+                        <option value="MZ">Manzana</option>
+                        <option value="MN">Mezzanine</option>
+                        <option value="MD">Módulo</option>
+                        <option value="OF">Oficina</option>
+                        <option value="PQ">Parque</option>
+                        <option value="PA">Parqueadero</option>
+                        <option value="PN">Pent-House</option>
+                        <option value="PI">Piso</option>
+                        <option value="PL">Planta</option>
+                        <option value="PR">Portería</option>
+                        <option value="PD">Predio</option>
+                        <option value="PU">Puesto</option>
+                        <option value="RP">Round Point</option>
+                        <option value="SC">Sector</option>
+                        <option value="SS">Semisótano</option>
+                        <option value="SO">Sótano</option>
+                        <option value="ST">Suite</option>
+                        <option value="SM">Supermanzana</option>
+                        <option value="TZ">Terraza</option>
+                        <option value="TO">Torre</option>
+                        <option value="UN">Unidad</option>
+                        <option value="UL">Unidad Residencial</option>
+                        <option value="UR">Urbanización</option>
+                        <option value="ZN">Zona</option>
+                    </select>  
+                </div>
+                
+                
+            </div>
+            <textarea id="direccion" readonly ></textarea>
+            <label id="button" onclick="duplicarDiv(this)">Insertar otra Dirección</label>
+            <div id="contenedor">
+                
+            </div>
+            
+            </div>
+            
+            
+            <input type="submit" name="button" id="button" onclick="obligatorio()" value="Enviar">
+        </form>
+    </body>
