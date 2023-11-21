@@ -49,7 +49,9 @@
             %>
             <option value="<%=tc.getIdTipoContacto()%>"><%=tc.getDescTipoContacto()%></option>
             <%}%>
-        </select>--%><br>
+        </select>
+             <input type="text" name="descContacto" id="descContacto" oninput="validarCaracteresEspeciales(this)"><br>
+            <br>--%>
             <label id="button" onclick="duplicarDiv(this)">Insertar otro Contacto</label>
             <div id="c">
                 
