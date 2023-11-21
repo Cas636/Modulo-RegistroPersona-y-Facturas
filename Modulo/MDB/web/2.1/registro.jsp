@@ -1,4 +1,4 @@
-<%@page import="back.*" contentType="text/html" pageEncoding="UTF-8" %>
+<%@page import="back.DAOS.*,back.Modelo.*" contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 
@@ -9,48 +9,43 @@
     </head>
 
     <body>
-        <form>
-            <% PersonaDAO persona=new PersonaDAO(); 
-                //if(persona.existente(request.getParameter("nDocumento"))){
-                //out.println("El documento del usuario ya ha sido registrado"); } 
-                //else{ /*
-                Persona person=new Persona();
-                person.setnDocumento(request.getParameter("nDocumento"));
-                person.setTipoDoc(request.getParameter("tipoDocumento"));
-                person.setNombre(request.getParameter("nombre")); 
-                person.setApellido(request.getParameter("apellido"));
-                person.setDireccion(request.getParameter("direccion"));
-                person.setCorreo(request.getParameter("correo")); 
-                person.setCelular(request.getParameter("celular"));
-                person.setTipoPersona(Integer.parseInt(request.getParameter("tipoPersona")));
-                person.setTipoContacto(Integer.parseInt(request.getParameter("tipoContacto")));
-                person.setTipo_via(request.getParameter("tipo_via"));
-                person.setNum_nom_principal(request.getParameter("num_nom_principal"));
-                person.setLet_num_principal(request.getParameter("let_num_principal"));
-                person.setPrefBis(request.getParameter("prefBis"));
-                person.setLet_num_prebis(request.getParameter("let_num_prebis"));
-                person.setCuadrante(request.getParameter("cuadrante"));
-                person.setNum_via_gener(Integer.parseInt(request.getParameter("num_via_gener")));
-                person.setLet_num_via_gener(request.getParameter("let_num_via_gener"));
-                person.setSufBis(request.getParameter("sufBis"));
-                person.setLet_num_su_bis(request.getParameter("let_num_su_bis"));
-                person.setNum_placa(Integer.parseInt(request.getParameter("num_placa")));
-                person.setCuadrante_via_gener(request.getParameter("cuadrante_via_gener"));
-                person.setComplemento1(request.getParameter("complemento1"));
-                person.setBarrio(request.getParameter("barrio"));
-                person.setNom_barrio(request.getParameter("nom_barrio"));
-                person.setUrbanizacion(request.getParameter("urbanizacion"));
-                person.setNom_urbanizacion(request.getParameter("nom_urbanizacion"));
-                person.setManzana(request.getParameter("manzana"));
-                person.setNom_manzana(request.getParameter("nom_manzana"));
-                person.setTipo_predio(request.getParameter("tipo_predio"));
-                person.setNom_predio(request.getParameter("nom_predio"));
-                person.setComplemento2(request.getParameter("complemento2")); 
-                
-                persona.addPersona(person);
-                out.println("Usuario registrado exitosamente"+person); } %>
-
-        </form>
+            <%
+                PersonaDAO persona=new PersonaDAO();
+                ContactoDAO contacto= new ContactoDAO();
+                DireccionDAO direccion= new DireccionDAO();
+                if(persona.existente(request.getParameter("nDocumento"))){
+                    out.println("El documento del usuario ya ha sido registrado");
+                }else{
+                    Persona person=new Persona();
+                    person.setIdTipoPersona(request.getParameter("tipoPersona"));
+                    person.setIdTipoDoc(request.getParameter("tipoDocumento"));
+                    person.setnDocumento(request.getParameter("nDocumento"));
+                    person.setNombre(request.getParameter("nombre"));
+                    person.setApellido(request.getParameter("apellido"));
+                    persona.addPersona(person);
+                    out.println("Usuario registrado exitosamente"+person);
+                    Contacto c=new Contacto();
+                    c.setConsecContacto(contacto.getMaxId()+1);
+                    c.setIdTipoContacto(request.getParameter("tipoContacto"));
+                    c.setDescTipoContacto(request.getParameter("descTipoContacto"));
+                    c.setIdTipoPersona(request.getParameter("tipoPersona"));
+                    c.setIdTipoDoc(request.getParameter("tipoDocumento"));
+                    c.setnDocumento(request.getParameter("nDocumento"));
+                    c.setDescContacto(request.getParameter("descContacto"));
+                    contacto.addContacto(c);
+                    Direccion d=new Direccion();                  
+                    d.setIdDireccion(direccion.getMaxId()+1);
+                    d.setIdTipoPersona(request.getParameter("tipoPersona"));
+                    d.setIdTipoDoc(request.getParameter("tipoDocumento"));
+                    d.setnDocumento(request.getParameter("nDocumento"));
+                    d.setValorDirec("Dir");
+                    ComponenteDireccDAO cd=new ComponenteDireccDAO();
+                    for(int id : cd.getIds()){
+                        d.setPosicion(id);
+                        d.setIdNomen(request.getParameter(Integer.toString(id)));
+                        direccion.addDireccion(d);
+                    }
+                }
+            %>
     </body>
-
 </html>

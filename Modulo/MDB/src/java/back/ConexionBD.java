@@ -15,7 +15,7 @@ public class ConexionBD {
             }else{
                 try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conexion = DriverManager.getConnection(stringConexion, "BD182","BD182");
+			conexion = DriverManager.getConnection(stringConexion, "MODFINAL","MODFINAL");
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se encuentra el driver");
 		}

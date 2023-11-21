@@ -57,8 +57,10 @@ input, select {
     margin: 1rem;
     width: 90%;
 }
-
-#miDiv {
+#contCont {
+      display: none;
+    }
+#direc {
       display: none;
     }
 #contDirecc {

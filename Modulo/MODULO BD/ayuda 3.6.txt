@@ -1,2 +1,0 @@
-/*--Consulta Para ver los nombres de los empleados---*/
-select E.nomempleado , C.nomcargo from empleado E , cargo C , empleadocargo EC where E.codempleado = EC.codempleado and C.codcargo = EC.codcargo;
