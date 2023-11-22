@@ -41,17 +41,17 @@
         
         <label id="button" onclick="mostrarOcultarDiv(this)">Insertar Contacto</label>
         <div id="contCont">
-            <%--<select name="tipoContacto" id="tipoContacto">
+            <select name="tipoContacto" id="tipoContacto">
             <%
-                TipoContactoDAO tdco = new TipoContactoDAO();
-                tdco.getTipoContacto();
-                for(TipoDoc tc : tdco.getTd()){
+                TipoContactoDAO tcc = new TipoContactoDAO();
+                tcc.getTipoContacto();
+                for(TipoContacto tc : tcc.getTc()){
             %>
             <option value="<%=tc.getIdTipoContacto()%>"><%=tc.getDescTipoContacto()%></option>
             <%}%>
         </select>
              <input type="text" name="descContacto" id="descContacto" oninput="validarCaracteresEspeciales(this)"><br>
-            <br>--%>
+            <br>
             <label id="button" onclick="duplicarDiv(this)">Insertar otro Contacto</label>
             <div id="c">
                 
@@ -100,9 +100,7 @@
             </div>
 
         </div>
-
-
-        <input type="submit" name="button" id="button" onclick="var formulario = document.getElementById('miFormulario');
+                <input type="submit" name="button" id="button" onclick="var formulario = document.getElementById('miFormulario');
                                                                 formulario.addEventListener('submit', handleSubmit);" value="Enviar">
     </form>
 </body>

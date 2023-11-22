@@ -25,14 +25,17 @@
                     persona.addPersona(person);
                     out.println("Usuario registrado exitosamente"+person);
                     Contacto c=new Contacto();
-                    c.setConsecContacto(contacto.getMaxId()+1);
-                    c.setIdTipoContacto(request.getParameter("tipoContacto"));
-                    c.setDescTipoContacto(request.getParameter("descTipoContacto"));
+                    TipoContactoDAO tc=new TipoContactoDAO();
                     c.setIdTipoPersona(request.getParameter("tipoPersona"));
                     c.setIdTipoDoc(request.getParameter("tipoDocumento"));
                     c.setnDocumento(request.getParameter("nDocumento"));
-                    c.setDescContacto(request.getParameter("descContacto"));
-                    contacto.addContacto(c);
+                    for(String id : tc.getIds()){
+                        c.setConsecContacto(contacto.getMaxId()+1);
+                        c.setIdTipoContacto(id);
+                        c.setDescTipoContacto(tc.getDescByID(id));
+                        c.setDescContacto(request.getParameter("descContacto"));
+                        contacto.addContacto(c);
+                    }
                     Direccion d=new Direccion();                  
                     d.setIdDireccion(direccion.getMaxId()+1);
                     d.setIdTipoPersona(request.getParameter("tipoPersona"));

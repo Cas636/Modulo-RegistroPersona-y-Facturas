@@ -16,17 +16,51 @@ import java.util.ArrayList;
  * @author diego
  */
 public class TipoContactoDAO {
-    private ArrayList<TipoContacto> td;
-    public void getTipoDoc() throws SQLException{
-         TipoContacto tdc=new TipoContacto();
+    private ArrayList<TipoContacto> tc=new ArrayList<>();
+    public void getTipoContacto() throws SQLException{
         ConexionBD con=new ConexionBD();
         Statement stm=con.obtenerConexion().createStatement();
         ResultSet rs=stm.executeQuery("SELECT * FROM TipoContacto");
         while(rs.next()){
-            tdc.setIdTipoContacto(rs.getString("idTipoContacto"));
-            tdc.setDescTipoContacto(rs.getString("descTipoContacto"));
-            td.add(tdc);
+            TipoContacto tcc=new TipoContacto();
+            tcc.setIdTipoContacto(rs.getString("idTipoContacto"));
+            tcc.setDescTipoContacto(rs.getString("descTipoContacto"));
+            tc.add(tcc);
         }
         con.close();
     }
+    public String getDescByID(String id) throws SQLException{
+        ConexionBD con=new ConexionBD();
+        Statement stm=con.obtenerConexion().createStatement();
+        ResultSet rs=stm.executeQuery("SELECT descTipoContacto FROM TipoContacto "
+                + "WHERE idTipoContacto='"+id+"'");
+        if(rs.next()){
+            String desc;
+            desc=rs.getString("descTipoContacto");
+            con.close();
+            return desc;
+        }else{
+            return "Invalid Type";
+        }
+        
+    }
+    public ArrayList<String> getIds() throws SQLException{
+        ConexionBD con=new ConexionBD();
+        Statement stm=con.obtenerConexion().createStatement();
+        ResultSet rs=stm.executeQuery("SELECT idTipoContacto FROM TipoContacto");
+        ArrayList<String> ids=new ArrayList<>();
+        while(rs.next()){           
+            ids.add(rs.getString("idTipoContacto"));           
+        }
+        con.close();
+        return ids;
+    }
+    public ArrayList<TipoContacto> getTc() {
+        return tc;
+    }
+
+    public void setTc(ArrayList<TipoContacto> tc) {
+        this.tc = tc;
+    }
+    
 }
