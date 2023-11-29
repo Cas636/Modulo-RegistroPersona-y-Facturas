@@ -4,8 +4,6 @@
  */
 package back.Modelo;
 
-import java.util.Date;
-
 /**
  *
  * @author diego
@@ -18,7 +16,7 @@ public class Inventario {
     private int inv_consecInven;
     private String idCatProducto;
     private String refProducto;
-    private Date fechaInve;
+    private String fechaInve;
     private int salen;
     private int entran;
     private int existencia;
@@ -79,11 +77,11 @@ public class Inventario {
         this.refProducto = refProducto;
     }
 
-    public Date getFechaInve() {
+    public String getFechaInve() {
         return fechaInve;
     }
 
-    public void setFechaInve(Date fechaInve) {
+    public void setFechaInve(String fechaInve) {
         this.fechaInve = fechaInve;
     }
 

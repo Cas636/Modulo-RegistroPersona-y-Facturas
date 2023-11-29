@@ -209,3 +209,6 @@ insert into tipoPersona values ('2', 'Proveedor');
 
 insert into tipoDoc values ('CC', 'Cedula');
 insert into tipoDoc values ('NT', 'NIT');
+
+insert into tipoContacto values ('CO', 'Correo');
+insert into tipoContacto values ('Ce', 'Celular');

@@ -41,4 +41,16 @@ public class DireccionDAO {
             return -1;
         }
     }
+    public String getDirById(String id) throws SQLException{
+        ConexionBD con=new ConexionBD();
+        Statement stm=con.obtenerConexion().createStatement();
+        ResultSet rs=stm.executeQuery("SELECT idnomen FROM direccion "
+                + "where ndocumento='"+id+"' order by posicion");
+        String dir = "";
+        while(rs.next()){
+            dir=dir+rs.getString("idnomen")+" ";     
+        }
+        con.close(); 
+        return dir;
+    }
 }

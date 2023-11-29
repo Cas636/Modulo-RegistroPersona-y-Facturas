@@ -25,6 +25,28 @@ public class PersonaDAO {
         }
         con.close();
     }
+    public Persona getPersonaById(String id) throws SQLException{
+        Persona persona=new Persona();
+        ConexionBD con=new ConexionBD();
+        Statement stm=con.obtenerConexion().createStatement();
+        ResultSet rs=stm.executeQuery("SELECT * FROM persona "
+                + "WHERE nDocumento='"+id+"'");
+        if(rs.next()){
+            persona.setnDocumento(rs.getString("nDocumento"));
+            persona.setNombre(rs.getString("nombre"));
+            persona.setApellido(rs.getString("apellido"));
+            persona.setIdTipoDoc(rs.getString("idTopoDoc"));
+            persona.setIdTipoPersona(rs.getString("idTipoPersona"));
+            con.close();
+            return persona;
+        }else{
+            /*persona.setnDocumento("No registrado");
+            persona.setNombre("No registrado");
+            persona.setApellido("No registrado");*/
+            con.close();
+            return null;
+        }
+    }
     public void addPersona(Persona persona){
         ConexionBD con=new ConexionBD();
         try{

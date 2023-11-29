@@ -1,10 +1,5 @@
 package back.Modelo;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-
 public class Factura {
     private String idTipoFactura;
     private String nFactura;
@@ -14,7 +9,7 @@ public class Factura {
     private String Fac_idTipoFac;
     private String Fac_nFactura;
     private String codEmpleado;
-    private Date fecha;
+    private String fecha;
     private float totalFactura;
 
     public String getIdTipoFactura() {
@@ -81,11 +76,11 @@ public class Factura {
         this.codEmpleado = codEmpleado;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
