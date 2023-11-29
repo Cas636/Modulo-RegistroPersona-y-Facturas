@@ -63,9 +63,15 @@
                             f.setIdTipoDoc(p.getPersonaById(request.getParameter("PersonaImplicada")).getIdTipoDoc());
                             f.setnDocumento(request.getParameter("PersonaImplicada"));
                             f.setCodEmpleado(request.getParameter("nDocumento"));
-                            f.setTotalFactura(0);
+                            int total=0;
+                            while(request.getParameter("item"+i)!=null){
+                                total=total+Integer.parseInt(request.getParameter("cant"+i))*h.getPrecioById(request.getParameter("item"+i));
+                                i++;
+                            }
+                            f.setTotalFactura(total);
                         }
                             boolean facturar=true;
+                            i=1;
                             while(request.getParameter("item"+i)!=null && (f.getIdTipoFactura().equals("VE") || f.getIdTipoFactura().equals("DC"))){
                                 if(ind.getExistenciaReciente(request.getParameter("item"+i))<Integer.parseInt(request.getParameter("cant"+i))){
                                     facturar=false;
