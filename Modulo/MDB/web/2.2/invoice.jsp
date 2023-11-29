@@ -22,12 +22,7 @@
 
     <div class="invoice">
         <div id="capture">
-            <h1><%-- Proceso para la generación de la factura --%>
-                <%-- Instanciación de objetos DAO --%>
-                <%-- Lógica para determinar el tipo de factura --%>
-                <%-- Creación de la factura en la base de datos --%>
-                <%-- Mostrar información de la factura según el tipo --%>
-      
+            <h1>
                 <%
                         PersonaDAO p=new PersonaDAO();
                         CargoDAO c= new CargoDAO();
@@ -65,7 +60,9 @@
                             f.setCodEmpleado(request.getParameter("nDocumento"));
                             int total=0;
                             while(request.getParameter("item"+i)!=null){
-                                total=total+Integer.parseInt(request.getParameter("cant"+i))*h.getPrecioById(request.getParameter("item"+i));
+                                if(!request.getParameter("cant"+i).equals("")){
+                                    total=total+Integer.parseInt(request.getParameter("cant"+i))*h.getPrecioById(request.getParameter("item"+i));
+                                }
                                 i++;
                             }
                             f.setTotalFactura(total);
