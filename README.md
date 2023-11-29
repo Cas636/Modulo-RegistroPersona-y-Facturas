@@ -1,5 +1,4 @@
-# Modulo-RegistroPersona-y-Facturas
-Modulo para la Materia Bases de Datos 1 Universidad Distrital Francisco José de Caldas
+
 # Proyecto de Bases de Datos 1: módulo de GESTION PERSONA Y GESTION FACTURACIÓN
 
 
@@ -160,10 +159,6 @@ catalina start
 Y en el navegador de preferencia buscar 
 ```node
 http://localhost:8080/proyecto/MDB/2.1/signIn.html
-```
-Ó
-```node
-http://localhost:8080/proyecto/MDB/2.2/invoice.jsp
 ```
 Deetener el servicio:
 ```node
