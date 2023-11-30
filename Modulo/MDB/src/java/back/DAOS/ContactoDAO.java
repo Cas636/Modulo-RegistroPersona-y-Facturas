@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- *
+ *    
  * @author diego
  */
 public class ContactoDAO {
@@ -40,6 +40,20 @@ public class ContactoDAO {
         }else{
             con.close();
             return -1;
+        }
+    }
+    public String getCorreoById(String id) throws SQLException{
+        ConexionBD con=new ConexionBD();
+        Statement stm=con.obtenerConexion().createStatement();
+        ResultSet rs=stm.executeQuery("SELECT desccontacto FROM contacto "
+                + "where ndocumento='"+id+"' and desctipocontacto='Correo'");
+        if(rs.next()){
+            String max=rs.getString("desccontacto");
+            con.close();
+            return max;
+        }else{
+            con.close();
+            return "No email";
         }
     }
 }

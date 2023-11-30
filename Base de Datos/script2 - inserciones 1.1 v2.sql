@@ -5,6 +5,7 @@ insert into dependencia (coddependencia,nomdependencia,estadodepen) values ('2',
 insert into dependencia (coddependencia,nomdependencia,estadodepen) values ('3','Financiera' ,1);
 insert into dependencia (coddependencia,nomdependencia,estadodepen) values ('4','Reputacion ',1);
 insert into dependencia (coddependencia,nomdependencia,estadodepen) values ('5','Proveedores' ,1);
+insert into dependencia (coddependencia,nomdependencia,estadodepen) values ('6','vacio' ,1);
 /*------------1.1.2-------------- */
 /*Se insertan cargos*/ 
 insert into cargo (codcargo,coddependencia,nomcargo,estadocargo) values ('1', '1', 'Director Comercial',1);
@@ -14,6 +15,7 @@ insert into cargo (codcargo,coddependencia,nomcargo,estadocargo) values ('4', '1
 insert into cargo (codcargo,coddependencia,nomcargo,estadocargo) values ('5', '1', 'Vendedor',1);
 insert into cargo (codcargo,coddependencia,nomcargo,estadocargo) values ('6', '1', 'Gerente de Compras',1);
 insert into cargo (codcargo,coddependencia,nomcargo,estadocargo) values ('7', '1', 'Auxiliar de Compras',1);
+insert into cargo (codcargo,coddependencia,nomcargo,estadocargo) values ('8', '1', 'Vacio',1);
 /*Se insertan empleados*/ 
 insert into empleado (codempleado,nomempleado,apellempleado,correo) values ('00001','Lucas','Clavijo','PP@gmail.com');
 insert into empleado (codempleado,nomempleado,apellempleado,correo) values ('00002','Diego','Mora','DM@gmail.com');
@@ -28,6 +30,7 @@ insert into empleado (codempleado,nomempleado,apellempleado,correo) values ('000
 insert into empleado (codempleado,nomempleado,apellempleado,correo) values ('00011','Camilo','Sanchez','CS@gmail.com');
 insert into empleado (codempleado,nomempleado,apellempleado,correo) values ('00012','Aurelio','Fernandez','AF@gmail.com');
 insert into empleado (codempleado,nomempleado,apellempleado,correo) values ('00013','Paola','Cuellar','PC@gmail.com');
+insert into empleado (codempleado,nomempleado,apellempleado,correo) values ('00014','vacio','vacio','vacio');
 /*Se asignan cargos a los empleados*/ 
 insert into empleadocargo (codcargo,codempleado) values ('1','00001');
 insert into empleadocargo (codcargo,codempleado) values ('2','00002');
@@ -148,6 +151,7 @@ insert into nomenclatura (posicion,idnomen,descnomen) values ('21','EQ','Esquina
 insert into nomenclatura (posicion,idnomen,descnomen) values ('21','EX','Exterior');
 insert into nomenclatura (posicion,idnomen,descnomen) values ('21','FI','Finca');
 insert into nomenclatura (posicion,idnomen,descnomen) values ('21','KM','Kilometro');
+insert into nomenclatura (posicion,idnomen,descnomen) values ('21','NL','vacio');
 /*------------1.1.4-------------- */
 /*Se insertan las categorias principales de productos */
 insert into catproducto (idcatproducto,nomproducto) values ('1','Alimentos');
@@ -161,6 +165,7 @@ insert into catproducto (idcatproducto,nomproducto) values ('8','Oficina');
 insert into catproducto (idcatproducto,nomproducto) values ('9','Exteriores');
 insert into catproducto (idcatproducto,nomproducto) values ('10','Muebles');
 insert into catproducto (idcatproducto,nomproducto) values ('11','Hogar');
+insert into catproducto (idcatproducto,nomproducto) values ('12','vacio');
 /*Se insertan las categorias secundarias de productos */
 insert into catproducto (idcatproducto,cat_idcatproducto,nomproducto) values ('110','1','Dulces');
 insert into catproducto (idcatproducto,cat_idcatproducto,nomproducto) values ('111','1','Chocolates');
@@ -173,6 +178,7 @@ insert into catproducto (idcatproducto,cat_idcatproducto,nomproducto) values ('1
 insert into catproducto (idcatproducto,cat_idcatproducto,nomproducto) values ('118','1','Condimentos');
 insert into catproducto (idcatproducto,cat_idcatproducto,nomproducto) values ('119','1','Frutas');
 insert into catproducto (idcatproducto,cat_idcatproducto,nomproducto) values ('120','1','Vegetales');
+insert into catproducto (idcatproducto,cat_idcatproducto,nomproducto) values ('121','1','vacio');
 /*------------1.1.5-------------- */
 /*Se insertan los productos */
 insert into producto (idcatproducto,refproducto,nomproducto) values ('110', '00001', 'Bom Bom Bum');
@@ -180,32 +186,36 @@ insert into producto (idcatproducto,refproducto,nomproducto) values ('111', '000
 insert into producto (idcatproducto,refproducto,nomproducto) values ('112', '00003', 'Chicle Splott');
 insert into producto (idcatproducto,refproducto,nomproducto) values ('115', '00004', 'Sun Tea');
 insert into producto (idcatproducto,refproducto,nomproducto) values ('118', '00005', 'Paprika');
+insert into producto (idcatproducto,refproducto,nomproducto) values ('119', '00006', 'vacio');
 /*Se insertan precios de los productos */
-insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('110','00001','1','01/01/2020','01/01/2021','600');
-insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('110','00001','2','02/01/2021','01/01/2023','800');
-insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('110','00001','3','02/01/2023',null,'900');
-insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('111','00002','4','01/01/2020','01/01/2021','700');
-insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('111','00002','5','02/01/2021','01/01/2023','900');
-insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('111','00002','6','02/01/2023',null,'1100');
-insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('112','00003','7','01/01/2020','01/01/2021','300');
-insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('112','00003','8','02/01/2021','01/01/2023','400');
-insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('112','00003','9','02/01/2023',null,'550');
-insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('115','00004','10','01/01/2020','01/01/2021','1000');
-insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('115','00004','11','02/01/2021','01/01/2023','1200');
-insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('115','00004','12','02/01/2023',null,'1300');
-insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('118','00005','13','01/01/2020','01/01/2021','5000');
-insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('118','00005','14','02/01/2021','01/01/2023','5500');
-insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('118','00005','15','02/01/2023',null,'6500');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('110','00001','1',TO_DATE('01/01/2020','DD,MM,YYYY'),TO_DATE('01/01/2021','DD,MM,YYYY'),'600');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('110','00001','2',TO_DATE('02/01/2021','DD,MM,YYYY'),TO_DATE('01/01/2023','DD,MM,YYYY'),'800');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('110','00001','3',TO_DATE('02/01/2023','DD,MM,YYYY'),null,'900');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('111','00002','4',TO_DATE('01/01/2020','DD,MM,YYYY'),TO_DATE('01/01/2021','DD,MM,YYYY'),'700');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('111','00002','5',TO_DATE('02/01/2021','DD,MM,YYYY'),TO_DATE('01/01/2023','DD,MM,YYYY'),'900');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('111','00002','6',TO_DATE('02/01/2023','DD,MM,YYYY'),null,'1100');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('112','00003','7',TO_DATE('01/01/2020','DD,MM,YYYY'),TO_DATE('01/01/2021','DD,MM,YYYY'),'300');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('112','00003','8',TO_DATE('02/01/2021','DD,MM,YYYY'),TO_DATE('01/01/2023','DD,MM,YYYY'),'400');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('112','00003','9',TO_DATE('02/01/2023','DD,MM,YYYY'),null,'550');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('115','00004','10',TO_DATE('01/01/2020','DD,MM,YYYY'),TO_DATE('01/01/2021','DD,MM,YYYY'),'1000');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('115','00004','11',TO_DATE('02/01/2021','DD,MM,YYYY'),TO_DATE('01/01/2023','DD,MM,YYYY'),'1200');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('115','00004','12',TO_DATE('02/01/2023','DD,MM,YYYY'),null,'1300');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('118','00005','13',TO_DATE('01/01/2020','DD,MM,YYYY'),TO_DATE('01/01/2021','DD,MM,YYYY'),'5000');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('118','00005','14',TO_DATE('02/01/2021','DD,MM,YYYY'),TO_DATE('01/01/2023','DD,MM,YYYY'),'5500');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('118','00005','15',TO_DATE('02/01/2023','DD,MM,YYYY'),null,'6500');
+insert into historicoprecio (idcatproducto,refproducto,consecprecio,fechainicio,fechafin,valor) values ('119','00006','16',TO_DATE('02/01/2023','DD,MM,YYYY'),null,'6500');
 /*------------1.1.6-------------- */
 /*Se insertan datos en tabla tipofactura*/
 insert into tipofactura (idtipofac,desctipofac) values ('VE', 'Venta');
 insert into tipofactura (idtipofac,desctipofac) values ('CO', 'Compra');
 insert into tipofactura (idtipofac,desctipofac) values ('DV', 'Devolucion Venta');
 insert into tipofactura (idtipofac,desctipofac) values ('DC', 'Devolucion Compra');
-
+/*Se insertan datos en tabla tipoPersona*/
 insert into tipoPersona values ('1', 'Cliente');
 insert into tipoPersona values ('2', 'Proveedor');
-
-
+/*Se insertan datos en tabla tipoDoc*/
 insert into tipoDoc values ('CC', 'Cedula');
 insert into tipoDoc values ('NT', 'NIT');
+/*Se insertan datos en tabla tipoContacto*/
+insert into tipoContacto values ('CR', 'Correo');
+insert into tipoContacto values ('TL', 'Telefono');

@@ -130,9 +130,9 @@ Clonar el repositorio:
 ```node
 git clone https://github.com/Cas636/Modulo-RegistroPersona-y-Facturas.git
 ```
-Copiar el archivo de ejecución en la carpeta del servidor TOMCAT:
+Copiar la carpeta de ejecución en la carpeta del servidor TOMCAT:
 ```node
-xcopy C:\Users\JOHAN\Documents\NetBeansProjects\Modulo-RegistroPersona-y-Facturas\proyecto.war C:\Program Files\Apache Software Foundation\Tomcat 10.1 /s
+xcopy C:\Users\JOHAN\Documents\NetBeansProjects\Modulo-RegistroPersona-y-Facturas\Modulo\MDB C:\Program Files\Apache Software Foundation\Tomcat 10.1 /s
 ```
 ### Ejecución de la aplicación 
 

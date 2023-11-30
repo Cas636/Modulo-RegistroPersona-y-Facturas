@@ -14,7 +14,9 @@
                 ContactoDAO contacto= new ContactoDAO();
                 DireccionDAO direccion= new DireccionDAO();
                 if(persona.existente(request.getParameter("nDocumento"))){
-                    out.println("El documento del usuario ya ha sido registrado");
+            %>
+                <strong><h2>El documento del usuario ya ha sido registrado</h2></strong>
+            <%
                 }else{
                     Persona person=new Persona();
                     person.setIdTipoPersona(request.getParameter("tipoPersona"));
@@ -23,7 +25,6 @@
                     person.setNombre(request.getParameter("nombre"));
                     person.setApellido(request.getParameter("apellido"));
                     persona.addPersona(person);
-                    out.println("Usuario registrado exitosamente"+person);
                     Contacto c=new Contacto();
                     TipoContactoDAO tc=new TipoContactoDAO();
                     c.setIdTipoPersona(request.getParameter("tipoPersona"));
@@ -48,7 +49,11 @@
                         d.setIdNomen(request.getParameter(Integer.toString(id)));
                         direccion.addDireccion(d);
                     }
-                }
             %>
+            <strong><h2>Usuario registrado exitosamente</h2></strong>
+            <%}%>
+            <a href="signIn.html">
+                <right><h3>Ir a inicio</h3></right>
+            </a>
     </body>
 </html>

@@ -145,7 +145,7 @@ create table DETALLEFACTURA (
    IDCATPRODUCTO        VARCHAR(3)           not null,
    REFPRODUCTO          VARCHAR(5)           not null,
    CANTIDAD             NUMERIC(3)           not null,
-   PRECIO               NUMERIC(4,2)         not null,
+   PRECIO               NUMERIC(6,2)         not null,
    constraint PK_DETALLEFACTURA primary key (IDTIPOFAC, NFACTURA_, ITEM)
 );
 
@@ -423,7 +423,7 @@ IDNOMEN
 /*==============================================================*/
 /* Index: COMPONENTEDIRECCNOMENCLATURA_FK                       */
 /*==============================================================*/
-create  index COMPONENTEDIRECCNOMENCLATURA_FK on NOMENCLATURA (
+create  index COMPDIRNOM_FK on NOMENCLATURA (
 POSICION
 );
 
