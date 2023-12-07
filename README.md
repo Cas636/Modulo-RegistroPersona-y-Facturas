@@ -169,3 +169,16 @@ Desactivar el entorno virtual. Para Windows:
 ```node
 deactivate
 ```
+### Vistas del Aplicativo
+
+![](/Recursos/img1.png)
+
+![](/Recursos/img2.png)
+
+![](/Recursos/img3.png)
+
+![](/Recursos/img4.png)
+
+![](/Recursos/img5.png)
+
+![](/Recursos/img6.png)
